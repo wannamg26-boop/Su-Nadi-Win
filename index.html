@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Su Nadi Win! 👑</title>
     
+    <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@400;600;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -18,14 +19,15 @@
 
         body {
             background: #09070f;
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Outfit', 'Padauk', sans-serif;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
+            padding: 20px 0;
         }
 
         /* Animated Glowing Background Plasma */
@@ -51,7 +53,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 30px;
-            padding: 40px 25px;
+            padding: 35px 20px;
             text-align: center;
             z-index: 10;
             overflow: hidden;
@@ -65,7 +67,7 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 30px;
-            padding: 2px; /* Border thickness */
+            padding: 2px;
             background: linear-gradient(135deg, #ff007f, #7928ca, #00dfd8);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -73,27 +75,40 @@
             pointer-events: none;
         }
 
-        .profile-wrapper {
+        /* Birthday Girl Photo Styling */
+        .birthday-photo-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px auto;
             position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
+            animation: bounceFloat 3s ease-in-out infinite;
         }
 
-        .avatar {
-            font-size: 4.5rem;
-            animation: bounceFloat 3s ease-in-out infinite;
-            display: inline-block;
+        .birthday-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff758c;
+            box-shadow: 0 0 20px rgba(255, 117, 140, 0.5);
+        }
+
+        .crown-icon {
+            position: absolute;
+            top: -23px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
         }
 
         h1 {
             font-family: 'Caveat', cursive;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 700;
             background: linear-gradient(to right, #ff007f, #ff758c, #00dfd8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
-            transform: rotate(-2deg);
         }
 
         .name-title {
@@ -101,16 +116,32 @@
             font-weight: 800;
             letter-spacing: 1px;
             color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
             margin-bottom: 20px;
         }
 
+        /* Myanmar Text Beautiful Font Styling */
         .wish-message {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #d1cbd6;
-            margin-bottom: 35px;
-            font-weight: 400;
+            font-family: 'Padauk', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #e3ddeb;
+            margin-bottom: 30px;
+            font-weight: normal;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .wish-message p {
+            margin-bottom: 10px;
+        }
+        .wish-message p:last-child {
+            margin-bottom: 0;
+            font-weight: bold;
+            color: #ff7eb3;
         }
 
         /* Neon Interactive Button */
@@ -118,27 +149,22 @@
             background: linear-gradient(45deg, #ff007f, #7928ca);
             border: none;
             color: white;
-            padding: 16px 32px;
+            padding: 15px 30px;
             font-size: 1rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
             transition: all 0.3s ease;
-            position: relative;
             letter-spacing: 1px;
         }
 
         .magic-btn:hover {
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.7), 0 0 15px rgba(0, 223, 216, 0.4);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.7);
             transform: scale(1.05);
         }
 
-        .magic-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Floating Elements (Hearts & Stars) */
+        /* Floating Elements */
         .particle {
             position: absolute;
             bottom: -50px;
@@ -147,7 +173,6 @@
             animation: floatUp linear forwards;
         }
 
-        /* Confetti Burst Elements */
         .confetti {
             position: absolute;
             width: 10px;
@@ -157,10 +182,9 @@
             animation: confettiFall linear forwards;
         }
 
-        /* Animations Logic */
         @keyframes backgroundShift {
             0% { transform: scale(1) translate(0, 0); }
-            100% { transform: scale(1.1) translate(-5%, -5%); }
+            100% { transform: scale(1.05) translate(-3%, -3%); }
         }
 
         @keyframes cardPopIn {
@@ -170,74 +194,63 @@
 
         @keyframes bounceFloat {
             0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
         }
 
         @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.3) rotate(0deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) scale(0.3) rotate(0deg); opacity: 0; }
             10% { opacity: 0.8; }
             90% { opacity: 0.8; }
-            100% {
-                transform: translateY(-110vh) scale(1.2) rotate(360deg);
-                opacity: 0;
-            }
+            100% { transform: translateY(-110vh) scale(1.2) rotate(360deg); opacity: 0; }
         }
 
         @keyframes confettiFall {
-            0% {
-                transform: translate(0, 0) cubic-bezier(0.1, 1, 0.1, 1);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(var(--x), var(--y)) rotate(var(--r));
-                opacity: 0;
-            }
+            0% { transform: translate(0, 0) cubic-bezier(0.1, 1, 0.1, 1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) rotate(var(--r)); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
     <div class="main-card">
-        <div class="profile-wrapper">
-            <div class="avatar">👑</div>
+        <div class="birthday-photo-container">
+            <div class="crown-icon">👑</div>
+            <!-- ⚠️ အောက်ကနေရာမှာ သင့်ရဲ့ ဓာတ်ပုံ Link ကို အစားထိုးထည့်ပါ -->
+            <img class="birthday-photo" src="https://i.postimg.cc/tg1C0bpZ/20251116-155722(1).avif" alt="Su Nadi Win">
         </div>
+
         <h1>Happy Birthday</h1>
         <div class="name-title">SU NADI WIN</div>
         
         <div class="wish-message">
-            <p>Wishing you a year as bright and beautiful as your smile! May your day be filled with endless laughter, pure happiness, and all the love you deserve. Keep shining like the star you are! ✨💖</p>
+            <p>Teenager life ရဲ့နောက်ဆုံးနှစ်ဖြစ်တဲ့ ၁၉ ကျော်ပီး ၂၀ ပြည့် မွေးနေ့မှာပျော်ရွှင်ပါစေ စုရေ...</p>
+            <p>မွေးနေ့ကစပီး စုစုလေးဒီထက်မက ပိုပိုပီးလှလာပါစေ၊ အရာရာတိုင်းမှာ အဆင်ပြေပါစေ၊ ကားဆိုက်ကယ် အန္တရာယ်တွေကနေလဲ ကင်းပါစေ။</p>
+            <p>မောင်နဲ့လဲညားပါစေ ❤️</p>
         </div>
 
         <button class="magic-btn" onclick="triggerMagic(event)">Tap for Magic ✨</button>
     </div>
 
     <script>
-        // Smoothly ambient rising hearts and stars
+        // Ambient floating particles
         const items = ['❤️', '💖', '✨', '⭐', '🎈'];
         function createAmbientParticle() {
             const particle = document.createElement('div');
             particle.classList.add('particle');
             particle.innerHTML = items[Math.floor(Math.random() * items.length)];
-            
             particle.style.left = Math.random() * 100 + 'vw';
             particle.style.animationDuration = Math.random() * 4 + 4 + 's'; 
-            particle.style.fontSize = Math.random() * 18 + 14 + 'px';
-            particle.style.opacity = Math.random() * 0.5 + 0.3;
-            
+            particle.style.fontSize = Math.random() * 16 + 14 + 'px';
+            particle.style.opacity = Math.random() * 0.4 + 0.2;
             document.body.appendChild(particle);
             setTimeout(() => { particle.remove(); }, 8000);
         }
-        setInterval(createAmbientParticle, 300);
+        setInterval(createAmbientParticle, 350);
 
-        // TikTok Style Confetti Blast on Click
+        // Confetti Blast Engine
         function triggerMagic(e) {
-            const colors = ['#ff007f', '#7928ca', '#00dfd8', '#ff758c', '#ffdd53', '#ffffff'];
-            const burstCount = 50;
-            
-            // Get button center coordinates for burst source
+            const colors = ['#ff007f', '#7928ca', '#00dfd8', '#ff758c', '#ffdd53'];
+            const burstCount = 45;
             const rect = e.target.getBoundingClientRect();
             const startX = rect.left + rect.width / 2;
             const startY = rect.top + rect.height / 2;
@@ -245,28 +258,24 @@
             for (let i = 0; i < burstCount; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
-                
-                // Style creation
                 confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.left = startX + 'px';
                 confetti.style.top = startY + 'px';
                 confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
                 
-                // Randomize explosion direction (Vector calculations)
                 const angle = Math.random() * Math.PI * 2;
-                const velocity = Math.random() * 200 + 100; // Force of blast
+                const velocity = Math.random() * 180 + 90;
                 const xDist = Math.cos(angle) * velocity;
-                const yDist = Math.sin(angle) * velocity + 150; // Include drop effect
+                const yDist = Math.sin(angle) * velocity + 130;
                 const rotation = Math.random() * 720 - 360;
 
                 confetti.style.setProperty('--x', `${xDist}px`);
                 confetti.style.setProperty('--y', `${yDist}px`);
                 confetti.style.setProperty('--r', `${rotation}deg`);
-                
-                confetti.style.animationDuration = Math.random() * 1 + 1 + 's';
+                confetti.style.animationDuration = Math.random() * 1 + 0.8 + 's';
 
                 document.body.appendChild(confetti);
-                setTimeout(() => { confetti.remove(); }, 2000);
+                setTimeout(() => { confetti.remove(); }, 1800);
             }
         }
     </script>
